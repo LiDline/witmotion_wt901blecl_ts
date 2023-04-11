@@ -8,7 +8,7 @@ const rateList = [0.2, 0.5, 1, 2, 5, 10, 20, 50];
 
 export default function RateSelect() {
   return (
-    <Box sx={{ minWidth: 120 }}>
+    <Box sx={{ minWidth: 120 }} className="Menu">
       <FormControl fullWidth>
         <InputLabel variant="standard" htmlFor="uncontrolled-native">
           Rate
@@ -21,7 +21,7 @@ export default function RateSelect() {
           }}
         >
           {rateList.map((x) => {
-            return <option value={x}>{x}</option>;
+            return <option key={String(x)} value={x}>{x}</option>;
           })}
         </NativeSelect>
       </FormControl>

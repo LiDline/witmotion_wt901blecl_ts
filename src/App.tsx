@@ -2,8 +2,8 @@ import { Button, ButtonGroup } from "@mui/material";
 import { useState } from "react";
 import Grid2 from "@mui/material/Unstable_Grid2"; // Grid version 2
 import CsvDownloader from "react-csv-downloader";
-
 import "./App.css";
+
 import { useApplication } from "./components/ApplicationProvider";
 import { ArraySensorDataInterface, columns } from "./functions/interfaces";
 import { SwitchSelector } from "./components/Switch";
@@ -95,11 +95,11 @@ function App() {
                 children={buttonLogic[Number(disabled)][1]}
               />
             </CsvDownloader>
-            <BasicMenu dis={disabled}/>
+            <BasicMenu dis={disabled} />
           </ButtonGroup>
         </Grid2>
         <Grid2 xs={6}>
-            <SwitchSelector /> {/*Выбор девайса */}
+          <SwitchSelector /> {/*Выбор девайса */}
         </Grid2>
         <Grid2 xs={12}>
           {!disabled && <Graphs inputData={inputData} />} {/* Графики */}

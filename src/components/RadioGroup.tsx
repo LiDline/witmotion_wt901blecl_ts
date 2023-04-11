@@ -4,6 +4,7 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
+import "./Menu.css";
 
 export default function AlgorithmTransition() {
   const [value, setValue] = React.useState("9 DOF");
@@ -13,10 +14,11 @@ export default function AlgorithmTransition() {
   };
   return (
     <FormControl>
-      <FormLabel id="demo-row-radio-buttons-group-label">
+      <FormLabel id="demo-row-radio-buttons-group-label" className="Menu">
         Algorithm transition
       </FormLabel>
       <RadioGroup
+        className="Menu"
         row
         aria-labelledby="demo-row-radio-buttons-group-label"
         name="row-radio-buttons-group"
