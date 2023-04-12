@@ -1,6 +1,7 @@
 import { SensorData } from "./ExtractDataFromRaw";
 import { ArraySensorDataInterface } from "./Interfaces";
 
+
 export const dataFlowRestriction = (
   inputData: ArraySensorDataInterface,
   data: SensorData

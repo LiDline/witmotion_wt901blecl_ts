@@ -40,7 +40,8 @@ export class Application {
   };
 
   // Запись на устройство (пока только кал. акс.)
-  public writeOnDevice = async (id: String) => {
+  public writeOnDevice = async (id: String | undefined) => {
+    console.debug(id);
     const writer = this.port.writable.getWriter();
     switch (id) {
       case "accelerometer_calibration":

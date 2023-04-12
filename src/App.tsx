@@ -12,6 +12,12 @@ import { dataFlowRestriction } from "./functions/DataFlowRestriction";
 import BasicMenu from "./components/Menu";
 
 function App() {
+
+//Список вопросов:
+// 1. RadioGroup - как убрать первоначальный выбор (без него всегда undefined)
+
+
+
   const { connectToDevices, disconnectToDevices } = useApplication(); // Берём методы объекта Application
   const [disabled, setDisabled] = useState<boolean>(true); // Переключение кнопок
   const [inputData, setInputData] = useState<ArraySensorDataInterface>({
