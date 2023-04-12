@@ -38,7 +38,7 @@ export const SwitchSelector = () => {
   return (
     <Stack direction="row-reverse" spacing={1} alignItems="center">
       <Typography>Bluetooth</Typography>
-      <Android12Switch  defaultChecked />
+      <Android12Switch  defaultChecked  disabled={true}/>
       <Typography>Usb</Typography>
     </Stack>
   );

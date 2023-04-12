@@ -1,5 +1,5 @@
 import React from "react";
-import { ArraySensorDataInterface } from "../functions/interfaces";
+import { ArraySensorDataInterface } from "../functions/Interfaces";
 import { SingleGraph } from "./SingleGraph";
 import Grid2 from "@mui/material/Unstable_Grid2"; // Grid version 2
 

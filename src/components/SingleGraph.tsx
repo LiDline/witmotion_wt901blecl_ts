@@ -11,7 +11,7 @@ import {
   ArcElement,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-import { SingleGraphInterface } from "../functions/interfaces";
+import { SingleGraphInterface } from "../functions/Interfaces";
 
 ChartJS.register(
   CategoryScale,

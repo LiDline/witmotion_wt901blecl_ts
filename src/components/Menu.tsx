@@ -48,14 +48,13 @@ const BasicMenu = ({ dis }: BasicMenuInterface) => {
         }}
       >
         <MenuItem
-          id="accelerometer_calibration"
           onClick={() => {
             writeOnDevice("accelerometer_calibration");
           }}
         >
           Accelerometer calibration
         </MenuItem>
-        <MenuItem>Magnetometer calibration</MenuItem>
+        <MenuItem disabled={true}>Magnetometer calibration</MenuItem>
         <Divider />
         <AlgorithmTransition />
         <Divider />

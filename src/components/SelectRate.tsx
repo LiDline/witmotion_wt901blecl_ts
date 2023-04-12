@@ -9,7 +9,7 @@ const rateList = [0.2, 0.5, 1, 2, 5, 10, 20, 50];
 export default function RateSelect() {
   return (
     <Box sx={{ minWidth: 120 }} className="Menu">
-      <FormControl fullWidth>
+      <FormControl fullWidth disabled={true}>
         <InputLabel variant="standard" htmlFor="uncontrolled-native">
           Rate
         </InputLabel>

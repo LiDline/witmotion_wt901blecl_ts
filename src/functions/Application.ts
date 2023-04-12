@@ -1,5 +1,6 @@
 import { sleep } from "@amcharts/amcharts5/.internal/core/util/Time";
-import { extractDataFromRaw, SensorData } from "./extractDataFromRaw";
+import { extractDataFromRaw, SensorData } from "./ExtractDataFromRaw";
+import { CommandSettings } from "./CommandsForDevice";
 
 export class Application {
   private port: SerialPort;
@@ -23,7 +24,6 @@ export class Application {
       }
 
       onDataReceived && onDataReceived(extractDataFromRaw(value)); // скидываем в функцию данные (сделали эту функцию не обязательной)
-      // console.debug(value)
 
       if (done) {
         break;
@@ -40,11 +40,27 @@ export class Application {
   };
 
   // Запись на устройство (пока только кал. акс.)
-  public writeOnDevice = async ( id: String ) => {    
+  public writeOnDevice = async (id: String) => {
     const writer = this.port.writable.getWriter();
-    const data = new Uint8Array([255, 170, 1, 1, 0]);
-    await writer.write(data);
-    // sleep(4000).then(async () => await writer.write(new Uint8Array([255, 170, 1, 1, 0])))
+    switch (id) {
+      case "accelerometer_calibration":
+        const data = new Uint8Array(CommandSettings.accelerometer_calibration);
+        await writer.write(data);
+        await sleep(3100);
+        await writer.write(
+          new Uint8Array(CommandSettings.exit_calibration_mode)
+        );
+        break;
+      case "6 DOF":
+        await writer.write(new Uint8Array(CommandSettings.DOF_6));
+        await writer.write(new Uint8Array(CommandSettings.save_configuration));
+        break;
+      case "9 DOF":
+        await writer.write(new Uint8Array(CommandSettings.DOF_9));
+        await writer.write(new Uint8Array(CommandSettings.save_configuration));
+        break;
+    }
+
     // Allow the serial port to be closed later.
     writer.releaseLock();
   };

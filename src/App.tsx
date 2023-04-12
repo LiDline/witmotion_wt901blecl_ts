@@ -5,10 +5,10 @@ import CsvDownloader from "react-csv-downloader";
 import "./App.css";
 
 import { useApplication } from "./components/ApplicationProvider";
-import { ArraySensorDataInterface, columns } from "./functions/interfaces";
+import { ArraySensorDataInterface, columns } from "./functions/Interfaces";
 import { SwitchSelector } from "./components/Switch";
 import { Graphs } from "./components/Graphs";
-import { dataFlowRestriction } from "./functions/dataFlowRestriction";
+import { dataFlowRestriction } from "./functions/DataFlowRestriction";
 import BasicMenu from "./components/Menu";
 
 function App() {
