@@ -6,6 +6,7 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import AlgorithmTransition from "./RadioGroup";
 import { Divider } from "@mui/material";
 import RateSelect from "./SelectRate";
+import { useApplication } from "./ApplicationProvider";
 
 interface BasicMenuInterface {
   dis: boolean; // А почему dis: boolean не прокатывает?????
@@ -21,11 +22,12 @@ const BasicMenu = ({ dis }: BasicMenuInterface) => {
     setAnchorEl(null);
   };
   const buttonLogic: any = ["contained", "outlined"]; // для variant
+  const { writeOnDevice } = useApplication(); // Берём методы объекта Application
 
   return (
     <div>
       <Button
-        disabled={false}
+        disabled={dis}
         variant={buttonLogic[Number(dis)]}
         id="basic-button"
         aria-controls={open ? "basic-menu" : undefined}
@@ -45,7 +47,11 @@ const BasicMenu = ({ dis }: BasicMenuInterface) => {
           "aria-labelledby": "basic-button",
         }}
       >
-        <MenuItem //onClick={handleClose}
+        <MenuItem
+          id="accelerometer_calibration"
+          onClick={() => {
+            writeOnDevice("accelerometer_calibration");
+          }}
         >
           Accelerometer calibration
         </MenuItem>
