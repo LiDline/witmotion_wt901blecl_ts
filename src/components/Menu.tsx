@@ -1,13 +1,11 @@
 import React from "react";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import AlgorithmTransition from "./RadioGroup";
+import AlgorithmTransition from "./RadioAlgorithmTransition";
 import { Divider } from "@mui/material";
 import RateSelect from "./SelectRate";
-import { useApplication } from "./ApplicationProvider";
-import SimpleBackdrop from "./BackDrop";
+import { AccelerometerBackdrop, MagnetometerBackdrop } from "./BackDrop";
 
 interface BasicMenuInterface {
   dis: boolean; // А почему dis: boolean не прокатывает?????
@@ -23,7 +21,6 @@ const BasicMenu = ({ dis }: BasicMenuInterface) => {
     setAnchorEl(null);
   };
   const buttonLogic: any = ["contained", "outlined"]; // для variant
-  const { writeOnDevice } = useApplication(); // Берём методы объекта Application
 
   return (
     <div>
@@ -48,12 +45,12 @@ const BasicMenu = ({ dis }: BasicMenuInterface) => {
           "aria-labelledby": "basic-button",
         }}
       >
-        <SimpleBackdrop />  {/* Калибровка акселерометра */}
-        <MenuItem disabled={true}>Magnetometer calibration</MenuItem> {/* Калибровка магнетометра */}
+        <AccelerometerBackdrop /> {/* Калибровка акселерометра */}
+        <MagnetometerBackdrop /> {/* Калибровка магнетометра */}
         <Divider />
         <AlgorithmTransition /> {/* Выбор кол-ва степеней свободы */}
         <Divider />
-        <RateSelect />  {/* Выбор частоты записи */}
+        <RateSelect /> {/* Выбор частоты записи */}
       </Menu>
     </div>
   );

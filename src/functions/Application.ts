@@ -40,15 +40,25 @@ export class Application {
   };
 
   // Запись на устройство (пока только кал. акс.)
-  public writeOnDevice = async (id: String | Number) => {
-    console.debug(id);
+  public writeOnDevice = async (command: String | Number) => {
+    console.debug(command);
 
     const writer = this.port.writable.getWriter();
-    switch (id) {
+    switch (command) {
       case "accelerometer_calibration":
         const data = new Uint8Array(CommandSettings.accelerometer_calibration);
         await writer.write(data);
         await sleep(3100);
+        await writer.write(
+          new Uint8Array(CommandSettings.exit_calibration_mode)
+        );
+        break;
+      case "magnetometer_calibration":
+        await writer.write(
+          new Uint8Array(CommandSettings.magnetometer_calibration)
+        );
+        break;
+      case "exit_calibration_mode":
         await writer.write(
           new Uint8Array(CommandSettings.exit_calibration_mode)
         );
