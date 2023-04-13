@@ -1,30 +1,46 @@
-import React from "react";
-import Box from "@mui/material/Box";
+import * as React from "react";
 import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
-import NativeSelect from "@mui/material/NativeSelect";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
+import { useApplication } from "./ApplicationProvider";
 
-const rateList = [0.2, 0.5, 1, 2, 5, 10, 20, 50];
 
-export default function RateSelect() {
+// Выбор частоты считывания
+export default function SelectAutoWidth() {
+  const [age, setAge] = React.useState("");
+
+  const handleChange = (event: SelectChangeEvent) => {
+    setAge(event.target.value);
+  };
+
+  const rateList = [0.2, 0.5, 1, 2, 5, 10, 20, 50];
+  const { writeOnDevice } = useApplication(); // Берём методы объекта Application
+
   return (
-    <Box sx={{ minWidth: 120 }} className="Menu">
-      <FormControl fullWidth disabled={true}>
-        <InputLabel variant="standard" htmlFor="uncontrolled-native">
-          Rate
+    <div>
+      <FormControl sx={{ m: 2, minWidth: 160 }}>
+        <InputLabel id="demo-simple-select-autowidth-label">
+          Rate [Hz]
         </InputLabel>
-        <NativeSelect
-          defaultValue={10}
-          inputProps={{
-            name: "age",
-            id: "uncontrolled-native",
-          }}
+        <Select
+          labelId="demo-simple-select-autowidth-label"
+          id="demo-simple-select-autowidth"
+          value={age}
+          onChange={handleChange}
+          autoWidth
+          label="Rate [Hz]"
         >
-          {rateList.map((x) => {
-            return <option key={String(x)} value={x}>{x}</option>;
+          <MenuItem value="">
+            <em>None</em>
+          </MenuItem>
+          {rateList.map((rate) => {
+            return <MenuItem key={rate} value={rate} onClick={() => writeOnDevice(rate)}>
+            {rate}</MenuItem>;
           })}
-        </NativeSelect>
+          
+        </Select>
       </FormControl>
-    </Box>
+    </div>
   );
 }

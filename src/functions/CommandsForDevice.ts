@@ -5,9 +5,7 @@ export const CommandSettings = {
   DOF_6: [255, 170, 36, 1, 0],
   DOF_9: [255, 170, 36, 0, 0],
   save_configuration: [255, 170, 0, 0, 0],
-};
-
-export const diRate = {
+  // Выбор частоты
   0.2: [255, 170, 3, 1, 0],
   0.5: [255, 170, 3, 2, 0],
   1: [255, 170, 3, 3, 0],

@@ -7,6 +7,7 @@ import AlgorithmTransition from "./RadioGroup";
 import { Divider } from "@mui/material";
 import RateSelect from "./SelectRate";
 import { useApplication } from "./ApplicationProvider";
+import SimpleBackdrop from "./BackDrop";
 
 interface BasicMenuInterface {
   dis: boolean; // А почему dis: boolean не прокатывает?????
@@ -47,18 +48,12 @@ const BasicMenu = ({ dis }: BasicMenuInterface) => {
           "aria-labelledby": "basic-button",
         }}
       >
-        <MenuItem
-          onClick={() => {
-            writeOnDevice("accelerometer_calibration");
-          }}
-        >
-          Accelerometer calibration
-        </MenuItem>
-        <MenuItem disabled={true}>Magnetometer calibration</MenuItem>
+        <SimpleBackdrop />  {/* Калибровка акселерометра */}
+        <MenuItem disabled={true}>Magnetometer calibration</MenuItem> {/* Калибровка магнетометра */}
         <Divider />
-        <AlgorithmTransition />
+        <AlgorithmTransition /> {/* Выбор кол-ва степеней свободы */}
         <Divider />
-        <RateSelect />
+        <RateSelect />  {/* Выбор частоты записи */}
       </Menu>
     </div>
   );

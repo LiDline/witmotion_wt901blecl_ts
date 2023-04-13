@@ -40,8 +40,9 @@ export class Application {
   };
 
   // Запись на устройство (пока только кал. акс.)
-  public writeOnDevice = async (id: String | undefined) => {
+  public writeOnDevice = async (id: String | Number) => {
     console.debug(id);
+
     const writer = this.port.writable.getWriter();
     switch (id) {
       case "accelerometer_calibration":
@@ -58,6 +59,38 @@ export class Application {
         break;
       case "9 DOF":
         await writer.write(new Uint8Array(CommandSettings.DOF_9));
+        await writer.write(new Uint8Array(CommandSettings.save_configuration));
+        break;
+      case 0.2:
+        await writer.write(new Uint8Array(CommandSettings["0.2"]));
+        await writer.write(new Uint8Array(CommandSettings.save_configuration));
+        break;
+      case 0.5:
+        await writer.write(new Uint8Array(CommandSettings["0.5"]));
+        await writer.write(new Uint8Array(CommandSettings.save_configuration));
+        break;
+      case 1:
+        await writer.write(new Uint8Array(CommandSettings[1]));
+        await writer.write(new Uint8Array(CommandSettings.save_configuration));
+        break;
+      case 2:
+        await writer.write(new Uint8Array(CommandSettings[2]));
+        await writer.write(new Uint8Array(CommandSettings.save_configuration));
+        break;
+      case 5:
+        await writer.write(new Uint8Array(CommandSettings[5]));
+        await writer.write(new Uint8Array(CommandSettings.save_configuration));
+        break;
+      case 10:
+        await writer.write(new Uint8Array(CommandSettings[10]));
+        await writer.write(new Uint8Array(CommandSettings.save_configuration));
+        break;
+      case 20:
+        await writer.write(new Uint8Array(CommandSettings[20]));
+        await writer.write(new Uint8Array(CommandSettings.save_configuration));
+        break;
+      case 50:
+        await writer.write(new Uint8Array(CommandSettings[50]));
         await writer.write(new Uint8Array(CommandSettings.save_configuration));
         break;
     }
