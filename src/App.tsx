@@ -12,23 +12,19 @@ import { dataFlowRestriction } from "./functions/DataFlowRestriction";
 import BasicMenu from "./components/Menu";
 
 function App() {
-
-//Список вопросов:
-// 1. RadioGroup - как убрать первоначальный выбор (без него всегда undefined)
-
+  //Список вопросов:
+  // 1. RadioGroup - как убрать первоначальный выбор (без него всегда undefined)
 
 
-  const { connectToDevices, disconnectToDevices } = useApplication(); // Берём методы объекта Application
-  const [disabled, setDisabled] = useState<boolean>(true); // Переключение кнопок
-  const [inputData, setInputData] = useState<ArraySensorDataInterface>({
-    // для графиков
+  // для графиков
+  const inputDataInit = {
     axc: { x: [], y: [], z: [] },
     vel: { x: [], y: [], z: [] },
     ang: { x: [], y: [], z: [] },
     counter: [0],
-  });
-  const [csv, setCsv] = useState([
-    // Для .csv
+  };
+  // Для .csv
+  const csvInit = [
     {
       1: "0",
       2: "0",
@@ -41,9 +37,17 @@ function App() {
       9: "0",
       10: "0",
     },
-  ]);
+  ];
+
+  // Берём методы объекта Application
+  const { connectToDevices, disconnectToDevices } = useApplication();
+  // Переключение кнопок
+  const [disabled, setDisabled] = useState<boolean>(true);
+  const [inputData, setInputData] =
+    useState<ArraySensorDataInterface>(inputDataInit);
+  const [csv, setCsv] = useState(csvInit);
+  // Для изменения цвета. Если убрать any начнётся говнофонтан из ошибок типов
   const buttonLogic: any = [
-    // Для изменения цвета. Если убрать any начнётся говнофонтан из ошибок типов
     ["error", "Disconnect & Save Data"],
     ["success", "Connect"],
   ];
@@ -94,6 +98,8 @@ function App() {
                   } else {
                     disconnectToDevices();
                     setDisabled(!disabled);
+                    setCsv(csvInit);
+                    setInputData(inputDataInit);
                   }
                 }}
                 variant="contained"
