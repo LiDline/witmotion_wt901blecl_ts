@@ -1,11 +1,10 @@
 import { Stack, styled, Typography } from "@mui/material";
 import Switch from "@mui/material/Switch";
 import React, { useEffect } from "react";
-
 import { useApplication } from "./ApplicationProvider";
 
 export const SwitchSelector = () => {
-  const [checked, setChecked] = React.useState(false);
+  const [checked, setChecked] = React.useState(true);
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setChecked(event.target.checked);
   };
@@ -14,7 +13,7 @@ export const SwitchSelector = () => {
   // Чтобы отправлять при запуске страницы
   useEffect(() => {
     choiceReader(checked);
-  }, []); // если убрать [], то react при перерисовке отправляет дважды choiceReader(checked)
+  }, []);
 
   const Android12Switch = styled(Switch)(({ theme }) => ({
     padding: 8,
@@ -54,7 +53,7 @@ export const SwitchSelector = () => {
       <Typography>Bluetooth</Typography>
       <Android12Switch
         checked={checked}
-        onChange={(event) => {
+        onChange={(event)=> {
           handleChange(event);
           choiceReader(event.target.checked);
         }}
