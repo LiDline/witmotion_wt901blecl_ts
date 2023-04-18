@@ -14,9 +14,9 @@ npm start
 Чтобы проверить, поддерживает ли ваш браузер Web Bluetooth API, вы можете воспользоваться следующими шагами:
 
 1. Откройте новую вкладку в браузере.
-2. В адресной строке введите "chrome://flags" (для Google Chrome) или "about:config" (для Firefox).
-3. Ищите параметр "Web Bluetooth" и убедитесь, что он включен.
-4. Затем введите "chrome://bluetooth-internals" (для Google Chrome) или "about:bluetooth" (для Firefox).
+2. В адресной строке введите "chrome://flags" (для Chrome) или "about:config" (для Firefox).
+3. Ищите параметр "Web Bluetooth" и убедитесь, что он включен (заменить default/disable на enable).
+4. Затем введите "chrome://bluetooth-internals" (для Chrome) или "about:bluetooth" (для Firefox).
 5. Если вы видите раздел "Devices" и "Services", значит, ваш браузер поддерживает Web Bluetooth API.
 
 Если вы используете другой браузер, вы можете проверить список поддерживаемых браузеров на сайте Web Bluetooth Community Group.

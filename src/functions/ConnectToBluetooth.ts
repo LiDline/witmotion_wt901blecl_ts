@@ -9,6 +9,12 @@ export class UsingBluetooth implements DeviceInterface {
     const device = await navigator.bluetooth.requestDevice({
       acceptAllDevices: true,
     });
+    console.log(device.name);
+    const server = await device.gatt?.connect();
+
+    // const service = await server?.getPrimaryService(serviceUUID);
+    // const characteristic = await service?.getCharacteristic(characteristicUUID);
+    // Дальнейшие действия с characteristic...
   };
 
   // Отключение от устройства
