@@ -73,34 +73,37 @@ function App() {
                 onClick={() => {
                   // стрелочная/лямбда ожидает на вход данные.
                   // В connectToDevices мы передаём именно сигнатуру функции, а не саму функцию
-                  if (disabled) {
-                    connectToDevices((data) => {
-                      // Отправляем изменения
-                      setInputData(dataFlowRestriction(inputData, data));
-                      setDisabled(!disabled);
-                      // Сохраним все данные для csv
-                      csv.push({
-                        1: String(
-                          inputData.counter[inputData.counter.length - 1]
-                        ),
-                        2: String(data.axc.x),
-                        3: String(data.axc.y),
-                        4: String(data.axc.z),
-                        5: String(data.vel.x),
-                        6: String(data.vel.y),
-                        7: String(data.vel.z),
-                        8: String(data.ang.x),
-                        9: String(data.ang.y),
-                        10: String(data.ang.z),
-                      });
-                      setCsv(csv);
-                    });
-                  } else {
+                  // if (disabled) {
+                  //   connectToDevices((data) => {
+                  //     // Отправляем изменения
+                  //     setInputData(dataFlowRestriction(inputData, data));
+                  //     setDisabled(!disabled);
+                  //     // Сохраним все данные для csv
+                  //     csv.push({
+                  //       1: String(
+                  //         inputData.counter[inputData.counter.length - 1]
+                  //       ),
+                  //       2: String(data.axc.x),
+                  //       3: String(data.axc.y),
+                  //       4: String(data.axc.z),
+                  //       5: String(data.vel.x),
+                  //       6: String(data.vel.y),
+                  //       7: String(data.vel.z),
+                  //       8: String(data.ang.x),
+                  //       9: String(data.ang.y),
+                  //       10: String(data.ang.z),
+                  //     });
+                  //     setCsv(csv);
+                  //   });
+                  // } else {
+                    connectToDevices((data) => {})
+                      //     // Отправляем изменения
+                      //     setInputData(dataFlowRestriction(inputData, data));
                     disconnectToDevices();
                     setDisabled(!disabled);
                     setCsv(csvInit);
                     setInputData(inputDataInit);
-                  }
+                  // }
                 }}
                 variant="contained"
                 color={buttonLogic[Number(disabled)][0]}
