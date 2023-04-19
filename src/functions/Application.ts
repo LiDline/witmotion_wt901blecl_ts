@@ -21,16 +21,16 @@ export class Application {
   public connectToDevices = async (
     onDataReceived?: (data: SensorData) => void // Сигнатура функции, позволяющая передать сюда другую функцию со своими фокусами
   ) => {
-    this.device.Connect(onDataReceived);
+    this.device.connect(onDataReceived);
   };
 
   // Отключение от устройства
   public disconnectToDevices = async () => {
-    this.device.Disconnect();
+    this.device.disconnect();
   };
 
-  // Запись на устройство (пока только кал. акс.)
+  // Запись на устройство
   public writeOnDevice = async (command: String | Number) => {
-    this.device.Write(command);
+    this.device.write(command);
   };
 }
