@@ -8,9 +8,10 @@ import RateSelect from "./SelectRate";
 import { AccelerometerBackdrop, MagnetometerBackdrop } from "./BackDrop";
 
 interface BasicMenuInterface {
-  dis: boolean; // А почему dis: boolean не прокатывает?????
+  dis: boolean;
 }
 
+// Содержание кнопки Settings
 const BasicMenu = ({ dis }: BasicMenuInterface) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);

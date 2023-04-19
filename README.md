@@ -1,8 +1,27 @@
 # WITMOTION WT901BLECL
 Здесь представлено небольшое web-приложение для использования датчика WT901BLECL (через USB и bluetooth) средствами react и TypeScript. Вся информация о датчике находится [тут](https://github.com/WITMOTION/WT901BLECL). Помимо этой документации, советую посмотреть документацию на используемый в датчике сенсор [WT901](https://images-na.ssl-images-amazon.com/images/I/B11fVGszLsS.pdf).
 
-## 1 Состав ветки на react + TS
-...
+## 1 Состав ветки на react + TS. Состав папки src
+1. Папка components с компонентами react:
+- ApplicationProvider.tsx - контекст для всего приложения;
+- BackDrop.tsx - кнопки Accelerometer calibration и Magnetometer calibration;
+- CardMagCal.tsx - всплывающий текст с объяснениями по калибровке магнитометра;
+- Graphs.tsx - отрисовка всех графиков;
+- Menu.tsx - содержание кнопки Settings;
+- RadioAlgorithmTransition.tsx - Переключатель степеней свободы (6 и 9 DOF);
+- SelectRate.tsx - выбор частоты считывания;
+- SingleGraph.tsx - отрисовка одного графика;
+- Switch.tsx - переключение usb/bluetooth.
+2. Папка functions с функциями .ts:
+- Application.ts - класс Application, методы которого передаются в App.tsx через контекст;
+- CommandsForDevice.ts - команды для управления датчиком;
+- ConnectToBluetooth.ts - класс для работы по Bluetooth;
+- ConnectToUsb.ts - класс для работы с Usb;
+- DataFlowRestriction.ts - метод, который отрисовывает заданное кол-во точек на графике;
+- ExtractDataFromRaw.ts - преобразование поступающих характеристик в числа;
+- Interfaces.ts - некоторые используемые интерфейсы;
+- switchWrite.ts - метод отправляющий на датчик выбранную команду настройки.
+3. App.tsx - основной файл.
 
 ## 2 Запуск программы
 Запуск программы осуществляется через npm. Приложение будет доступно в браузере по ссылке: http://127.0.0.1:3000/. 
@@ -10,7 +29,7 @@
 npm start
 ```
 
-Для подключения через Bluetooth проверьте, доступен/включен ли в Вашем браузере **Web Bluetooth API**. Для проверки Вы можете воспользоваться следующими шагами:
+Для подключения через Bluetooth проверьте доступен/включен ли в Вашем браузере **Web Bluetooth API**. Для этого Вы можете воспользоваться следующими шагами:
 
 1. Откройте новую вкладку в браузере.
 2. В адресной строке введите "chrome://flags" (для Chrome) или "about:config" (для Firefox).

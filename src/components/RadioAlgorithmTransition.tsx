@@ -7,6 +7,8 @@ import FormLabel from "@mui/material/FormLabel";
 import "./Menu.css";
 import { useApplication } from "./ApplicationProvider";
 
+
+// Переключатель степеней свободы (6 и 9 DOF)
 export default function AlgorithmTransition() {
   const { writeOnDevice } = useApplication(); // Берём методы объекта Application
 
