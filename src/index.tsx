@@ -10,7 +10,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <ApplicationProvider application={application} info={'Shalom'}>
+    <ApplicationProvider application={application}>
       <App />
     </ApplicationProvider>
   </React.StrictMode>
