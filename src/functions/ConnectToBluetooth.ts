@@ -9,7 +9,7 @@ export class UsingBluetooth implements DeviceInterface {
   private server: BluetoothRemoteGATTServer | undefined;
   private service: BluetoothRemoteGATTService | undefined;
 
-  // Подключаемся к USB
+  // Подключаемся к Bluetooth
   connect = async (onDataReceived?: (data: SensorData) => void) => {
     // Ищем датчик по uuid его сервиса (он единственный) и подключаемся
     const device = await navigator.bluetooth.requestDevice({

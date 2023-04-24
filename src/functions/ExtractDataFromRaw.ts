@@ -1,10 +1,14 @@
 import { Buffer } from "buffer";
 
+const divider = 32768.0
+let accelerationDecoded: number[]
+let angularVelocityDecoded: number[]
+let cornersDecoded: number[]
 
 export interface SensorData {
-  axc: Coordinates;
-  vel: Coordinates;
-  ang: Coordinates;
+  acceleration: Coordinates;
+  angularVelocity: Coordinates;
+  corners: Coordinates;
 }
 
 interface Coordinates {
@@ -23,21 +27,15 @@ export function extractDataFromRaw(raw: Uint8Array): SensorData {
     decoded = decoded.concat(buffer.readInt16LE(0));
   }
 
-  let ax = (decoded[0] / 32768.0) * 16;
-  let ay = (decoded[1] / 32768.0) * 16;
-  let az = (decoded[2] / 32768.0) * 16;
-
-  let wx = (decoded[3] / 32768.0) * 2000;
-  let wy = (decoded[4] / 32768.0) * 2000;
-  let wz = (decoded[5] / 32768.0) * 2000;
-
-  let Ax = (decoded[6] / 32768.0) * 180;
-  let Ay = (decoded[7] / 32768.0) * 180;
-  let Az = (decoded[8] / 32768.0) * 180;
+  for (let i = 0; i < 3; i++) {
+    accelerationDecoded[i] = (decoded[i] / divider) * 16;
+    angularVelocityDecoded[i] = (decoded[i+3] / divider) * 2000;
+    cornersDecoded[i] = (decoded[i+6] / divider) * 180;
+  }
 
   return {
-    axc: { x: ax, y: ay, z: az },
-    vel: { x: wx, y: wy, z: wz },
-    ang: { x: Ax, y: Ay, z: Az },
+    acceleration: { x: accelerationDecoded[0], y: accelerationDecoded[1], z: accelerationDecoded[2] },
+    angularVelocity: { x: angularVelocityDecoded[0], y: angularVelocityDecoded[1], z: angularVelocityDecoded[2] },
+    corners: { x: cornersDecoded[0], y: cornersDecoded[1], z: cornersDecoded[2] },
   };
 }

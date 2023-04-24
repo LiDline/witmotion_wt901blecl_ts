@@ -29,19 +29,19 @@ export const dataFlowRestriction = (
 
   // Добавляем данные
   // Ускорение
-  inputData.axc.x.push(data.axc.x);
-  inputData.axc.y.push(data.axc.y);
-  inputData.axc.z.push(data.axc.z);
+  inputData.axc.x.push(data.acceleration.x);
+  inputData.axc.y.push(data.acceleration.y);
+  inputData.axc.z.push(data.acceleration.z);
 
   // Угл. скорость
-  inputData.vel.x.push(data.vel.x);
-  inputData.vel.y.push(data.vel.y);
-  inputData.vel.z.push(data.vel.z);
+  inputData.vel.x.push(data.angularVelocity.x);
+  inputData.vel.y.push(data.angularVelocity.y);
+  inputData.vel.z.push(data.angularVelocity.z);
 
   // Угол
-  inputData.ang.x.push(data.ang.x);
-  inputData.ang.y.push(data.ang.y);
-  inputData.ang.z.push(data.ang.z);
+  inputData.ang.x.push(data.corners.x);
+  inputData.ang.y.push(data.corners.y);
+  inputData.ang.z.push(data.corners.z);
 
   // Время
   inputData.counter.push(inputData.counter[inputData.counter.length - 1] + 1);

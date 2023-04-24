@@ -10,9 +10,8 @@ interface MagnetometerBackdropInterface {
   handleClose: () => void;
 }
 
-
 // Карточка с объяснениями по калибровке магнитометра
-export const BasicCard: React.FC<MagnetometerBackdropInterface> = ({
+export const CardMagnetometerCalibration: React.FC<MagnetometerBackdropInterface> = ({
   handleClose,
 }) => {
   const { writeOnDevice } = useApplication(); // Берём методы объекта Application
@@ -36,7 +35,7 @@ export const BasicCard: React.FC<MagnetometerBackdropInterface> = ({
           variant="contained"
           onClick={() => {
             handleClose();
-            writeOnDevice('exit_calibration_mode');
+            writeOnDevice("exit_calibration_mode");
           }}
         >
           Close

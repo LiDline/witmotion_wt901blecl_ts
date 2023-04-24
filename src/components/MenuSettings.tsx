@@ -5,14 +5,15 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import AlgorithmTransition from "./RadioAlgorithmTransition";
 import { Divider } from "@mui/material";
 import RateSelect from "./SelectRate";
-import { AccelerometerBackdrop, MagnetometerBackdrop } from "./BackDrop";
+import { AccelerometerBackdrop } from "./AccelerometerBackdrop";
+import { MagnetometerBackdrop } from "./MagnetometerBackdrop";
 
 interface BasicMenuInterface {
   dis: boolean;
 }
 
 // Содержание кнопки Settings
-const BasicMenu = ({ dis }: BasicMenuInterface) => {
+const MenuSettings = ({ dis }: BasicMenuInterface) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -57,4 +58,4 @@ const BasicMenu = ({ dis }: BasicMenuInterface) => {
   );
 };
 
-export default BasicMenu;
+export default MenuSettings;
