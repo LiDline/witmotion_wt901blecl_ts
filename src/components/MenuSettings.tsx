@@ -11,6 +11,7 @@ import { MagnetometerBackdrop } from "./MagnetometerBackdrop";
 interface BasicMenuInterface {
   dis: boolean;
 }
+type ButtonLogic = "contained" | "outlined"; // для variant
 
 // Содержание кнопки Settings
 const MenuSettings = ({ dis }: BasicMenuInterface) => {
@@ -22,7 +23,10 @@ const MenuSettings = ({ dis }: BasicMenuInterface) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const buttonLogic: any = ["contained", "outlined"]; // для variant
+
+
+
+  const buttonLogic: ButtonLogic[] = ["contained", "outlined"];
 
   return (
     <div>

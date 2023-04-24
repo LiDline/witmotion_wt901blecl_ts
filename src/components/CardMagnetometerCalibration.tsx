@@ -38,7 +38,7 @@ export const CardMagnetometerCalibration: React.FC<MagnetometerBackdropInterface
             writeOnDevice("exit_calibration_mode");
           }}
         >
-          Close
+          End calibration
         </Button>
       </CardActions>
     </Card>

@@ -40,42 +40,42 @@ export const switchWrite = async (
         (await writeValue(new Uint8Array(CommandSettings.save_configuration)));
       break;
     case 0.2:
-      writeValue && (await writeValue(new Uint8Array(CommandSettings["0.2"])));
+      writeValue && (await writeValue(new Uint8Array(CommandSettings.rate_02)));
       writeValue &&
         (await writeValue(new Uint8Array(CommandSettings.save_configuration)));
       break;
     case 0.5:
-      writeValue && (await writeValue(new Uint8Array(CommandSettings["0.5"])));
+      writeValue && (await writeValue(new Uint8Array(CommandSettings.rate_05)));
       writeValue &&
         (await writeValue(new Uint8Array(CommandSettings.save_configuration)));
       break;
     case 1:
-      writeValue && (await writeValue(new Uint8Array(CommandSettings[1])));
+      writeValue && (await writeValue(new Uint8Array(CommandSettings.rate_1)));
       writeValue &&
         (await writeValue(new Uint8Array(CommandSettings.save_configuration)));
       break;
     case 2:
-      writeValue && (await writeValue(new Uint8Array(CommandSettings[2])));
+      writeValue && (await writeValue(new Uint8Array(CommandSettings.rate_2)));
       writeValue &&
         (await writeValue(new Uint8Array(CommandSettings.save_configuration)));
       break;
     case 5:
-      writeValue && (await writeValue(new Uint8Array(CommandSettings[5])));
+      writeValue && (await writeValue(new Uint8Array(CommandSettings.rate_5)));
       writeValue &&
         (await writeValue(new Uint8Array(CommandSettings.save_configuration)));
       break;
     case 10:
-      writeValue && (await writeValue(new Uint8Array(CommandSettings[10])));
+      writeValue && (await writeValue(new Uint8Array(CommandSettings.rate_10)));
       writeValue &&
         (await writeValue(new Uint8Array(CommandSettings.save_configuration)));
       break;
     case 20:
-      writeValue && (await writeValue(new Uint8Array(CommandSettings[20])));
+      writeValue && (await writeValue(new Uint8Array(CommandSettings.rate_20)));
       writeValue &&
         (await writeValue(new Uint8Array(CommandSettings.save_configuration)));
       break;
     case 50:
-      writeValue && (await writeValue(new Uint8Array(CommandSettings[50])));
+      writeValue && (await writeValue(new Uint8Array(CommandSettings.rate_50)));
       writeValue &&
         (await writeValue(new Uint8Array(CommandSettings.save_configuration)));
       break;
