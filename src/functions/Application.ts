@@ -1,9 +1,9 @@
 import { SensorData } from "./ExtractDataFromRaw";
 import { UsingUsb } from "./ConnectToUsb";
 import { UsingBluetooth } from "./ConnectToBluetooth";
-import { Device, DeviceInterface } from "./Device";
+import { DeviceInterface } from "./Device";
 
-export class Application extends Device {
+export class Application implements DeviceInterface {
   device: DeviceInterface;
 
   // Выбор считывателя
@@ -18,13 +18,11 @@ export class Application extends Device {
     }
   };
 
-
   public connect = async (
     onDataReceived?: (data: SensorData) => void // Сигнатура функции, позволяющая передать сюда другую функцию со своими фокусами
   ) => {
     this.device.connect(onDataReceived);
   };
-
 
   public disconnect = async () => {
     this.device.disconnect();

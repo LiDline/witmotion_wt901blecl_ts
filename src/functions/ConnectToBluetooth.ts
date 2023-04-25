@@ -1,8 +1,13 @@
-import { sleep } from "@amcharts/amcharts5/.internal/core/util/Time";
-import { Device } from "./Device";
+import { DeviceInterface } from "./Device";
 import { SensorData, extractDataFromRaw } from "./ExtractDataFromRaw";
+import {
+  defaultAccelerometerCalibration,
+  defaultDofSelect,
+  defaultMagnetometerCalibration,
+  defaultRateSelect,
+} from "./CalibrationFunctions";
 
-export class UsingBluetooth extends Device {
+export class UsingBluetooth implements DeviceInterface {
   private serviceUUID = "0000ffe5-0000-1000-8000-00805f9a34fb";
   private readUUID = "0000ffe4-0000-1000-8000-00805f9a34fb";
   private writeUUID = "0000ffe9-0000-1000-8000-00805f9a34fb";
@@ -48,73 +53,29 @@ export class UsingBluetooth extends Device {
   };
 
   public accelerometerCalibration = async () => {
-    this.writeCharacteristic?.writeValue(
-      this.CommandSettings.accelerometer_calibration
-    );
-    await sleep(3100);
-    this.writeCharacteristic?.writeValue(
-      this.CommandSettings.exit_calibration_mode
+    await defaultAccelerometerCalibration(
+      this.writeCharacteristic?.writeValue.bind(this.writeCharacteristic)
     );
   };
 
   public magnetometerCalibration = async (command: String) => {
-    switch (command) {
-      case "start":
-        await this.writeCharacteristic?.writeValue(
-          this.CommandSettings.magnetometer_calibration
-        );
-        break;
-      case "stop":
-        await this.writeCharacteristic?.writeValue(
-          this.CommandSettings.exit_calibration_mode
-        );
-        break;
-    }
+    await defaultMagnetometerCalibration(
+      command,
+      this.writeCharacteristic?.writeValue.bind(this.writeCharacteristic)
+    );
   };
 
   public dofSelect = async (command: String) => {
-    switch (command) {
-      case "6 DOF":
-        await this.writeCharacteristic?.writeValue(this.CommandSettings.DOF_6);
-        break;
-      case "9 DOF":
-        await this.writeCharacteristic?.writeValue(this.CommandSettings.DOF_9);
-        break;
-    }
-    await this.writeCharacteristic?.writeValue(
-      this.CommandSettings.save_configuration
+    await defaultDofSelect(
+      command,
+      this.writeCharacteristic?.writeValue.bind(this.writeCharacteristic)
     );
   };
 
   public rateSelect = async (command: Number) => {
-    switch (command) {
-      case 0.2:
-        await this.writeCharacteristic?.writeValue(this.RateSettings.rate_02);
-        break;
-      case 0.5:
-        await this.writeCharacteristic?.writeValue(this.RateSettings.rate_05);
-        break;
-      case 1:
-        await this.writeCharacteristic?.writeValue(this.RateSettings.rate_1);
-        break;
-      case 2:
-        await this.writeCharacteristic?.writeValue(this.RateSettings.rate_2);
-        break;
-      case 5:
-        await this.writeCharacteristic?.writeValue(this.RateSettings.rate_5);
-        break;
-      case 10:
-        await this.writeCharacteristic?.writeValue(this.RateSettings.rate_10);
-        break;
-      case 20:
-        await this.writeCharacteristic?.writeValue(this.RateSettings.rate_20);
-        break;
-      case 50:
-        await this.writeCharacteristic?.writeValue(this.RateSettings.rate_50);
-        break;
-    }
-    await this.writeCharacteristic?.writeValue(
-      this.CommandSettings.save_configuration
+    await defaultRateSelect(
+      command,
+      this.writeCharacteristic?.writeValue.bind(this.writeCharacteristic)
     );
   };
 }
