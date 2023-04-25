@@ -30,7 +30,6 @@ export class UsingUsb extends Device {
     }
   };
 
-  // Отключение от устройства
   public disconnect = async () => {
     this.reader.cancel();
     this.reader.releaseLock();
@@ -68,7 +67,8 @@ export class UsingUsb extends Device {
       case "9 DOF":
         await writer.write(this.CommandSettings.DOF_9);
         break;
-    }
+    };
+    await writer.write(this.CommandSettings.save_configuration);
     writer.releaseLock();
   };
 
