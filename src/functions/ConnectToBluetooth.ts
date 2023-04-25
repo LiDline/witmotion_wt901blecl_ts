@@ -1,8 +1,7 @@
-import { DeviceInterface } from "./ConnectToUsb";
+import { Device } from "./Device";
 import { SensorData, extractDataFromRaw } from "./ExtractDataFromRaw";
-import { switchWrite } from "./switchWrite";
 
-export class UsingBluetooth implements DeviceInterface {
+export class UsingBluetooth extends Device {
   private serviceUUID = "0000ffe5-0000-1000-8000-00805f9a34fb";
   private readUUID = "0000ffe4-0000-1000-8000-00805f9a34fb";
   private writeUUID = "0000ffe9-0000-1000-8000-00805f9a34fb";
@@ -27,26 +26,39 @@ export class UsingBluetooth implements DeviceInterface {
       const value = (event.target as BluetoothRemoteGATTCharacteristic).value;
       if (value !== undefined) {
         const byteData = new Uint8Array(value.buffer);
-
         onDataReceived && onDataReceived(extractDataFromRaw(byteData));
       }
     });
 
-    // Запускаем прослушиватель
+
     await characteristic?.startNotifications();
   };
 
-  // Отключение от устройства
+
   public disconnect = async () => {
     this.server?.disconnect();
   };
 
-  // Запись на устройство
-  public write = async (command: String | Number) => {
-    const characteristic = await this.service?.getCharacteristic(
-      this.writeUUID
-    );
+  // public write = async (command: String | Number) => {
+  //   const characteristic = await this.service?.getCharacteristic(
+  //     this.writeUUID
+  //   );
+  //   switchWrite(command, characteristic?.writeValue.bind(characteristic));
+  // };
 
-    switchWrite(command, characteristic?.writeValue.bind(characteristic));
+  public accelerometerCalibration = async () => {
+
+  };
+
+  public magnetometerCalibration = async (command: String) => {
+
+  };
+
+  public dofSelect = async (command: String) => {
+
+  };
+
+  public rateSelect = async (command: Number) => {
+
   };
 }

@@ -13,14 +13,14 @@ export function MagnetometerBackdrop() {
     const handleOpen = () => {
       setOpen(true);
     };
-    const { writeOnDevice } = useApplication(); // Берём методы объекта Application
+    const { magnetometerCalibration } = useApplication(); // Берём методы объекта Application
   
     return (
       <div>
         <MenuItem
           onClick={() => {
             handleOpen();
-            writeOnDevice('magnetometer_calibration');
+            magnetometerCalibration('start');
           }}
         >
           Magnetometer calibration

@@ -14,7 +14,7 @@ interface MagnetometerBackdropInterface {
 export const CardMagnetometerCalibration: React.FC<MagnetometerBackdropInterface> = ({
   handleClose,
 }) => {
-  const { writeOnDevice } = useApplication(); // Берём методы объекта Application
+  const { magnetometerCalibration } = useApplication(); // Берём методы объекта Application
 
   return (
     <Card sx={{ maxWidth: 400 }}>
@@ -35,7 +35,7 @@ export const CardMagnetometerCalibration: React.FC<MagnetometerBackdropInterface
           variant="contained"
           onClick={() => {
             handleClose();
-            writeOnDevice("exit_calibration_mode");
+            magnetometerCalibration('stop');
           }}
         >
           End calibration

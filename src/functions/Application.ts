@@ -1,8 +1,9 @@
 import { SensorData } from "./ExtractDataFromRaw";
-import { DeviceInterface, UsingUsb } from "./ConnectToUsb";
+import { UsingUsb } from "./ConnectToUsb";
 import { UsingBluetooth } from "./ConnectToBluetooth";
+import { Device, DeviceInterface } from "./Device";
 
-export class Application {
+export class Application extends Device {
   device: DeviceInterface;
 
   // Выбор считывателя
@@ -17,20 +18,31 @@ export class Application {
     }
   };
 
-  // Подключение к устройству
-  public connectToDevices = async (
+
+  public connect = async (
     onDataReceived?: (data: SensorData) => void // Сигнатура функции, позволяющая передать сюда другую функцию со своими фокусами
   ) => {
     this.device.connect(onDataReceived);
   };
 
-  // Отключение от устройства
-  public disconnectToDevices = async () => {
+
+  public disconnect = async () => {
     this.device.disconnect();
   };
 
-  // Запись на устройство
-  public writeOnDevice = async (command: String | Number) => {
-    this.device.write(command);
+  public accelerometerCalibration = async () => {
+    this.device.accelerometerCalibration();
+  };
+
+  public magnetometerCalibration = async (command: String) => {
+    this.device.magnetometerCalibration(command);
+  };
+
+  public dofSelect = async (command: String) => {
+    this.device.dofSelect(command);
+  };
+
+  public rateSelect = async (command: Number) => {
+    this.device.rateSelect(command);
   };
 }

@@ -10,7 +10,7 @@ import { useApplication } from "./ApplicationProvider";
 
 // Переключатель степеней свободы (6 и 9 DOF)
 export default function AlgorithmTransition() {
-  const { writeOnDevice } = useApplication(); // Берём методы объекта Application
+  const { dofSelect } = useApplication(); // Берём методы объекта Application
 
   return (
     <FormControl>
@@ -24,13 +24,13 @@ export default function AlgorithmTransition() {
         name="row-radio-buttons-group"
       >
         <FormControlLabel
-          onClick={() => writeOnDevice("6 DOF")}
+          onClick={() => dofSelect("6 DOF")}
           value="6 DOF"
           control={<Radio />}
           label="6 DOF"
         />
         <FormControlLabel
-          onClick={() => writeOnDevice("9 DOF")}
+          onClick={() => dofSelect("9 DOF")}
           value="9 DOF"
           control={<Radio />}
           label="9 DOF"

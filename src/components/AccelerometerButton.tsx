@@ -15,13 +15,13 @@ export function AccelerometerBackdrop() {
   const handleOpen = () => {
     setOpen(true);
   };
-  const { writeOnDevice } = useApplication(); // Берём методы объекта Application
+  const { accelerometerCalibration } = useApplication(); // Берём методы объекта Application
 
   return (
     <div>
       <MenuItem
         onClick={async () => {
-          writeOnDevice("accelerometer_calibration");
+          accelerometerCalibration();
           handleOpen();
           await sleep(3100);
           handleClose();

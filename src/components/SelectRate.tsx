@@ -15,7 +15,7 @@ export default function SelectAutoWidth() {
   };
 
   const rateList = [0.2, 0.5, 1, 2, 5, 10, 20, 50];
-  const { writeOnDevice } = useApplication(); // Берём методы объекта Application
+  const { rateSelect } = useApplication(); // Берём методы объекта Application
 
   return (
     <div>
@@ -35,7 +35,7 @@ export default function SelectAutoWidth() {
             <em>None</em>
           </MenuItem>
           {rateList.map((rate) => {
-            return <MenuItem key={rate} value={rate} onClick={() => writeOnDevice(rate)}>
+            return <MenuItem key={rate} value={rate} onClick={() => rateSelect(rate)}>
             {rate}</MenuItem>;
           })}
           

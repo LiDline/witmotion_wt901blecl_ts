@@ -35,7 +35,7 @@ export const Inner: React.FC = () => {
   ];
 
   // Берём методы объекта Application
-  const { connectToDevices, disconnectToDevices } = useApplication();
+  const { connect, disconnect } = useApplication();
   // Переключение кнопок
   const [disabled, setDisabled] = useState<boolean>(true);
   const [inputData, setInputData] =
@@ -65,7 +65,7 @@ export const Inner: React.FC = () => {
             // стрелочная/лямбда ожидает на вход данные.
             // В connectToDevices мы передаём именно сигнатуру функции, а не саму функцию
             if (disabled) {
-              connectToDevices((data) => {
+              connect((data) => {
                 // Отправляем изменения
                 setInputData(dataFlowRestriction(inputData, data));
                 setDisabled(!disabled);
@@ -87,7 +87,7 @@ export const Inner: React.FC = () => {
                 setCsv(csv);
               });
             } else {
-              disconnectToDevices();
+              disconnect();
               setDisabled(!disabled);
               setCsv(csvInit);
               setInputData(inputDataInit);

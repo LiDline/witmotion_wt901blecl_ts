@@ -2,11 +2,11 @@ import React from "react";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import AlgorithmTransition from "./RadioAlgorithmTransition";
+import AlgorithmTransition from "./AlgorithmTransition";
 import { Divider } from "@mui/material";
 import RateSelect from "./SelectRate";
-import { AccelerometerBackdrop } from "./AccelerometerBackdrop";
-import { MagnetometerBackdrop } from "./MagnetometerBackdrop";
+import { AccelerometerBackdrop } from "./AccelerometerButton";
+import { MagnetometerBackdrop } from "./MagnetometerButton";
 
 interface BasicMenuInterface {
   dis: boolean;
