@@ -1,7 +1,7 @@
 import { SensorData } from "./ExtractDataFromRaw";
 import { UsingUsb } from "./ConnectToUsb";
 import { UsingBluetooth } from "./ConnectToBluetooth";
-import { DeviceInterface } from "./Device";
+import { DeviceInterface } from "./DeviceInterface";
 
 export class Application implements DeviceInterface {
   device: DeviceInterface;

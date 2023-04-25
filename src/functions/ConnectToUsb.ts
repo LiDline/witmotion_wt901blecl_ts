@@ -1,4 +1,4 @@
-import { DeviceInterface } from "./Device";
+import { DeviceInterface } from "./DeviceInterface";
 import { SensorData, extractDataFromRaw } from "./ExtractDataFromRaw";
 import {
   defaultAccelerometerCalibration,
