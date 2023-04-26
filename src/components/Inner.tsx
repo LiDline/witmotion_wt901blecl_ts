@@ -53,7 +53,7 @@ export const Inner: React.FC = () => {
 
   return (
     <>
-      <Grid2 xs={3}>
+      <Grid2 xs={6}>
         <ButtonGroup>
           <Button
             onClick={() => {
@@ -95,12 +95,9 @@ export const Inner: React.FC = () => {
             children={buttonLogic[Number(disabled)][1]}
           />
           <MenuSettings dis={disabled} /> {/*Настройки девайса */}
+          <DownloadCsv data={downloadCsv} /> {/*Скачивание выбранного .csv */}
         </ButtonGroup>
       </Grid2>
-      <Grid2 xs={3}>
-        <DownloadCsv data={downloadCsv} /> {/*Скачивание выбранного .csv */}
-      </Grid2>
-
       <Grid2 xs={6}>
         <SwitchSelector /> {/*Выбор девайса */}
       </Grid2>

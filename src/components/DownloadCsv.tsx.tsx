@@ -48,7 +48,7 @@ export const DownloadCsv: React.FC<DownloadCsvInterface> = ({ data }) => {
       >
         {data.map((data, i) => {
           return (
-            <div>
+            <div key={i}>
               <CsvDownloader
                 filename="res"
                 extension=".csv"
@@ -57,7 +57,7 @@ export const DownloadCsv: React.FC<DownloadCsvInterface> = ({ data }) => {
                 columns={columns}
                 datas={data}
               >
-                <MenuItem key={i}>{i + 1}. Res.csv</MenuItem>
+                <MenuItem key={i}>Result {i + 1}</MenuItem>
               </CsvDownloader>
             </div>
           );
