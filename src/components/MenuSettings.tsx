@@ -24,8 +24,6 @@ const MenuSettings = ({ dis }: BasicMenuInterface) => {
     setAnchorEl(null);
   };
 
-
-
   const buttonLogic: ButtonLogic[] = ["contained", "outlined"];
 
   return (
