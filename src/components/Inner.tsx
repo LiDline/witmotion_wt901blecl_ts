@@ -1,5 +1,5 @@
 import { Button, ButtonGroup } from "@mui/material";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Grid2 from "@mui/material/Unstable_Grid2"; // Grid version 2
 import { useApplication } from "../components/ApplicationProvider";
 import { ArraySensorDataInterface } from "../functions/Interfaces";
@@ -51,6 +51,13 @@ export const Inner: React.FC = () => {
     ["success", "Connect"],
   ];
 
+
+  useEffect(() => {}, [])
+
+  const clearData = () => {
+    sesDownloadCsv([])
+  }
+
   return (
     <>
       <Grid2 xs={6}>
@@ -95,7 +102,7 @@ export const Inner: React.FC = () => {
             children={buttonLogic[Number(disabled)][1]}
           />
           <MenuSettings dis={disabled} /> {/*Настройки девайса */}
-          <DownloadCsv data={downloadCsv} /> {/*Скачивание выбранного .csv */}
+          <DownloadCsv data={downloadCsv} clearData={clearData}/> {/*Скачивание выбранного .csv */}
         </ButtonGroup>
       </Grid2>
       <Grid2 xs={6}>

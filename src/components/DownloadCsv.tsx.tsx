@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import { MenuItem } from "@mui/material";
+import { Divider, MenuItem } from "@mui/material";
 import CsvDownloader from "react-csv-downloader";
 import { columns } from "../functions/Interfaces";
 
@@ -11,10 +11,11 @@ export interface CsvInitInterface {
 }
 interface DownloadCsvInterface {
   data: CsvInitInterface[][];
+  clearData() : void;
 }
 
 // Содержание кнопки Settings
-export const DownloadCsv: React.FC<DownloadCsvInterface> = ({ data }) => {
+export const DownloadCsv: React.FC<DownloadCsvInterface> = ({ data, clearData }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -62,6 +63,8 @@ export const DownloadCsv: React.FC<DownloadCsvInterface> = ({ data }) => {
             </div>
           );
         })}
+        <Divider />
+        <MenuItem onClick={clearData}>Clear data</MenuItem>
       </Menu>
     </div>
   );
