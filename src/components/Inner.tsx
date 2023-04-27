@@ -44,19 +44,33 @@ export const Inner: React.FC = () => {
   // Наполнение одного .csv
   const [csv, setCsv] = useState(csvInit);
   // Создание массива из нескольких .csv
-  const [downloadCsv, sesDownloadCsv] = useState<CsvInitInterface[][]>([]);
+  const [downloadCsv, setDownloadCsv] = useState<CsvInitInterface[][]>([]);
 
   const buttonLogic: any = [
     ["error", "Disconnect & Save Data"],
     ["success", "Connect"],
   ];
 
-
-  useEffect(() => {}, [])
-
   const clearData = () => {
-    sesDownloadCsv([])
-  }
+    setDownloadCsv([]);
+  };
+
+  // Пусть при перезагрузке считанные данные подгружаются
+  useEffect(() => {
+    const saved = JSON.parse(
+      localStorage.getItem("csv") || "[]"
+    ) as CsvInitInterface[][];
+    console.log(saved);
+
+    if (saved.length > 0) {
+      setDownloadCsv(saved);
+    }
+  }, []);
+
+  // Пусть считанные данные записываются в лок. хранилище
+  useEffect(() => {
+    localStorage.setItem("csv", JSON.stringify(downloadCsv));
+  }, [downloadCsv]);
 
   return (
     <>
@@ -90,8 +104,8 @@ export const Inner: React.FC = () => {
                 disconnect();
                 setDisabled(!disabled);
 
-                downloadCsv!.push(csv);
-                sesDownloadCsv(downloadCsv);
+                const newDownloadCsv = [...downloadCsv, csv];
+                setDownloadCsv(newDownloadCsv);
 
                 setCsv(csvInit);
                 setInputData(inputDataInit);
@@ -102,7 +116,8 @@ export const Inner: React.FC = () => {
             children={buttonLogic[Number(disabled)][1]}
           />
           <MenuSettings dis={disabled} /> {/*Настройки девайса */}
-          <DownloadCsv data={downloadCsv} clearData={clearData}/> {/*Скачивание выбранного .csv */}
+          <DownloadCsv data={downloadCsv} clearData={clearData} />{" "}
+          {/*Скачивание выбранного .csv */}
         </ButtonGroup>
       </Grid2>
       <Grid2 xs={6}>

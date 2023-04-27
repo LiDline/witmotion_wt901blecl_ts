@@ -11,11 +11,14 @@ export interface CsvInitInterface {
 }
 interface DownloadCsvInterface {
   data: CsvInitInterface[][];
-  clearData() : void;
+  clearData(): void;
 }
 
 // Содержание кнопки Settings
-export const DownloadCsv: React.FC<DownloadCsvInterface> = ({ data, clearData }) => {
+export const DownloadCsv: React.FC<DownloadCsvInterface> = ({
+  data,
+  clearData,
+}) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -28,6 +31,7 @@ export const DownloadCsv: React.FC<DownloadCsvInterface> = ({ data, clearData })
   return (
     <div>
       <Button
+        color="warning"
         variant="contained"
         id="basic-button"
         aria-controls={open ? "basic-menu" : undefined}
