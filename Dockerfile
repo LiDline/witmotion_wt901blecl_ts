@@ -10,7 +10,7 @@ RUN npm run build
 
 FROM nginx:1-alpine3.17  
 RUN rm -rf /usr/share/nginx/html/*
-COPY --from=builder /usr/src/app/public/ /usr/share/nginx/html
+COPY --from=builder /usr/src/app/build/ /usr/share/nginx/html
 
 COPY ./.nginx/nginx.conf /etc/nginx/nginx.conf
 
