@@ -1,0 +1,24 @@
+include:
+  - local: .gitlab/templates/Auto-DevOps.gitlab-ci.yml
+
+variables:
+  CI_TEMPLATE_REGISTRY_HOST: "registry.gitlab.com"
+  
+  POSTGRES_ENABLED: "false"
+  DEPENDENCY_SCANNING_DISABLED: "true"
+  SAST_DISABLED: "true"
+  DAST_DISABLED: "true"
+  LICENSE_MANAGEMENT_DISABLED: "true"
+  LOAD_PERFORMANCE_DISABLED: "true"
+  BROWSER_PERFORMANCE_DISABLED: "true"
+  CONTAINER_SCANNING_DISABLED: "true"
+  SECRET_DETECTION_DISABLED: "true"
+  TEST_DISABLED: "true"
+  CODE_QUALITY_DISABLED: "true"
+  STAGING_ENABLED: "true"
+
+  KUBE_NAMESPACE: $CI_PROJECT_PATH_SLUG-$CI_COMMIT_REF_SLUG
+  KUBE_INGRESS_BASE_DOMAIN: k8s.auto-sys.su
+  KUBE_INGRESS_BASE_DOMAIN_PROD: <domain.name>
+  KUBE_CONTEXT: $CI_PROJECT_PATH:as-auto-devops
+  KUBE_CONTEXT_PROD: $CI_PROJECT_PATH:<gitlab-agent-name>
